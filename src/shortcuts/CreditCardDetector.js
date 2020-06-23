@@ -2,7 +2,7 @@
 
 var CreditCardDetector = {
     blocks: {
-        uatp:          [4, 5, 6],
+        bca:          [4, 4, 4, 4],
         amex:          [4, 6, 5],
         diners:        [4, 6, 4],
         discover:      [4, 4, 4, 4],
@@ -19,8 +19,11 @@ var CreditCardDetector = {
     },
 
     re: {
-        // starts with 1; 15 digits, not starts with 1800 (jcb card)
-        uatp: /^(?!1800)1\d{0,14}/,
+        // starts with 1; 16 digit bca
+
+        // THIS PART IS FORKED AND THUS CHANGED INTO BCA FROM UATP
+        // IF YOU WANT TO SEE THE ORIGINAL VERSION GO TO: https://github.com/nosir/cleave.js/blob/master/src/shortcuts/CreditCardDetector.js
+        bca: /^1\d{0,15}/,
 
         // starts with 34/37; 15 digits
         amex: /^3[47]\d{0,13}/,
